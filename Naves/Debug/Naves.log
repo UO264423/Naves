@@ -1,3 +1,5 @@
-﻿  Background.cpp
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\Background.cpp(19,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+﻿  EnemyExtra.cpp
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\EnemyExtra.cpp(14,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\EnemyExtra.cpp(18,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\EnemyExtra.cpp(20,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Naves.vcxproj -> C:\Users\Lucas Suárez Cabal\source\repos\Naves\Debug\Naves.exe

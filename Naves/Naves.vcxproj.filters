@@ -25,6 +25,12 @@
     <Filter Include="Archivos de encabezado\Actores">
       <UniqueIdentifier>{16187133-3e79-4ce8-878f-548903026a53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Actores\Enemigo">
+      <UniqueIdentifier>{6d202f41-e1bd-4aa5-9c9a-0d7246c921ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Actores\Enemigo">
+      <UniqueIdentifier>{b941cf1c-410f-419b-98bc-1370dae3a936}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -48,9 +54,6 @@
     <ClCompile Include="Background.cpp">
       <Filter>Archivos de origen\Actores</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Archivos de origen\Actores</Filter>
-    </ClCompile>
     <ClCompile Include="Projectile.cpp">
       <Filter>Archivos de origen\Actores</Filter>
     </ClCompile>
@@ -62,6 +65,15 @@
     </ClCompile>
     <ClCompile Include="Audio.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Archivos de origen\Actores\Enemigo</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBase.cpp">
+      <Filter>Archivos de origen\Actores\Enemigo</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyExtra.cpp">
+      <Filter>Archivos de origen\Actores\Enemigo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +95,6 @@
     <ClInclude Include="Background.h">
       <Filter>Archivos de encabezado\Actores</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Archivos de encabezado\Actores</Filter>
-    </ClInclude>
     <ClInclude Include="Projectile.h">
       <Filter>Archivos de encabezado\Actores</Filter>
     </ClInclude>
@@ -97,6 +106,15 @@
     </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBase.h">
+      <Filter>Archivos de encabezado\Actores\Enemigo</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Archivos de encabezado\Actores\Enemigo</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyExtra.h">
+      <Filter>Archivos de encabezado\Actores\Enemigo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

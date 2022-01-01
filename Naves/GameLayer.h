@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "BackGround.h"
 #include "Enemy.h"
+#include "EnemyExtra.h"
 #include "Projectile.h"
 #include "Text.h"
 #include "Audio.h"
@@ -29,7 +30,7 @@ public:
 	int controlMoveY = 0;
 	int controlMoveX = 0;
 
-	list<Enemy*> enemies;
+	list<EnemyBase*> enemies;
 	list<Projectile*> projectiles;
 };
 
