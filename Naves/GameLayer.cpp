@@ -12,16 +12,21 @@ void GameLayer::init() {
 	audioBomba = new Audio("/res/efecto_explosion.wav",false);
 	points = 0;
 	vida = 3;
+	disparos = 7;
 	textPoints = new Text("hola", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
+	textDisparos = new Text("hola", WIDTH * 0.88, HEIGHT * 0.92, game);
+	textDisparos->content = to_string(disparos);
 	textVida = new Text("hola", WIDTH * 0.12, HEIGHT * 0.04, game);
 	textVida->content = to_string(vida);
 	player = new Player(50, 50, game);
 	background = new Background("res/fondo.png", WIDTH * 0.5, HEIGHT * 0.5,-1, game);
 	backgroundPoints = new Actor("res/icono_puntos.png", WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
+	disparosImg = new Actor("res/disparo_jugador2.png", WIDTH * 0.79, HEIGHT * 0.92, 24, 24, game);
 	vidaPoints = new Actor("res/corazon.png", WIDTH * 0.05, HEIGHT * 0.05, 44, 36, game);
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
 	bombas.clear();
+	listPowerUp.clear();
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	enemies.push_back(new Enemy(300, 50, game));
 	enemies.push_back(new EnemyExtra(300, 200, game));
@@ -35,10 +40,10 @@ void GameLayer::processControls() {
 	//procesar controles
 	// Disparar
 	if (controlShoot) {
-		Projectile* newProjectile = player->shoot();
-		if (newProjectile != NULL) {
-			projectiles.push_back(newProjectile);
-		}
+			Projectile* newProjectile = player->shoot();
+			if (newProjectile != NULL) {
+				projectiles.push_back(newProjectile);
+			}
 	}
 	// Eje X
 	if (controlMoveX > 0) {
@@ -87,7 +92,13 @@ void GameLayer::keysToControls(SDL_Event event) {
 			controlMoveY = 1;
 			break;
 		case SDLK_SPACE: // dispara
-			controlShoot = true;
+			if (!controlShoot) {
+				if (disparos > 0 && player->shootTime==0) {
+					disparos--;
+					textDisparos->content = to_string(disparos);
+					controlShoot = true;
+				}
+			}
 			break;
 		}
 	}
@@ -130,6 +141,8 @@ void GameLayer::update() {
 	// Generar enemigos
 	newEnemyTime--;
 	newBombTime--;
+	newPowerUpTime--;
+	cout << newPowerUpTime << endl;
 	if (newEnemyTime <= 0) {
 		int rX = (rand() % (600 - 500)) + 1 + 500;
 		int rY = (rand() % (300 - 60)) + 1 + 60;
@@ -142,13 +155,23 @@ void GameLayer::update() {
 	if (newBombTime <= 0) {
 		int rX = (rand() % (460));
 		int rY = (rand() % (300 - 60));
-		bombas.push_back(new Bomb(150, 200, game));
+		bombas.push_back(new Bomb(rX, rY, game));
 		newBombTime = 600;
 	}
+	if (newPowerUpTime <= 0) {
+		int rX = (rand() % (460));
+		int rY = (rand() % (300 - 60));
+		listPowerUp.push_back(new PowerUpDisparos(rX, rY, game));
+		newPowerUpTime = 600;
+	}
+
 	//-----
 	player->update();
 	for (auto const& enemy : enemies) {
 		enemy->update();
+	}
+	for (auto const& pw : listPowerUp) {
+		pw->update();
 	}
 
 	for (auto const& projectile : projectiles) {
@@ -170,6 +193,7 @@ void GameLayer::update() {
 	list<EnemyBase*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	list<Bomb*> deleteBombas;
+	list<PowerUpDisparos*> deletePW;
 	//Colision bomba jugador
 	for (auto const& bomba : bombas) {
 		if (player->isOverlap(bomba)) {
@@ -191,6 +215,14 @@ void GameLayer::update() {
 			}
 		}
 	}
+	for (auto const& pw : listPowerUp) {
+		if (player->isOverlap(pw)) {
+			deletePW.push_back(pw);
+			disparos += 10;
+			textDisparos->content = to_string(disparos);
+		}
+	}
+
 
 	for (auto const& enemy : enemies) {
 		for (auto const& projectile : projectiles) {
@@ -215,12 +247,18 @@ void GameLayer::update() {
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
 	}
+
+	for (auto const& delPW : deletePW) {
+		listPowerUp.remove(delPW);
+	} 
+
 	deleteEnemies.clear();
 	for (auto const& delProjectile : deleteProjectiles) {
 		projectiles.remove(delProjectile);
 		delete delProjectile;
 	}
 	deleteProjectiles.clear();
+	deletePW.clear();
 
 }
 void GameLayer::draw() {
@@ -236,10 +274,17 @@ void GameLayer::draw() {
 	for (auto const& bomb : bombas) {
 		bomb->draw();
 	}
+
+	for (auto const& pw : listPowerUp) {
+		pw->draw();
+	}
 	textPoints->draw();
 	textVida->draw();
+	textDisparos->draw();
+	backgroundPoints->draw();
 	backgroundPoints->draw();
 	vidaPoints->draw();
+	disparosImg->draw();
 
 	SDL_RenderPresent(game->renderer); // Renderiza
 }

@@ -78,6 +78,9 @@
     <ClCompile Include="Bomb.cpp">
       <Filter>Archivos de origen\Actores</Filter>
     </ClCompile>
+    <ClCompile Include="PowerUpDisparos.cpp">
+      <Filter>Archivos de origen\Actores</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -120,6 +123,9 @@
       <Filter>Archivos de encabezado\Actores\Enemigo</Filter>
     </ClInclude>
     <ClInclude Include="Bomb.h">
+      <Filter>Archivos de encabezado\Actores</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUpDisparos.h">
       <Filter>Archivos de encabezado\Actores</Filter>
     </ClInclude>
   </ItemGroup>
