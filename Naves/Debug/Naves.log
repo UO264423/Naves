@@ -1,5 +1,8 @@
-﻿  EnemyExtra.cpp
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\EnemyExtra.cpp(14,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\EnemyExtra.cpp(18,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\EnemyExtra.cpp(20,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+﻿  GameLayer.cpp
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\Audio.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(14,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(133,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(133,31): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(136,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(136,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Naves.vcxproj -> C:\Users\Lucas Suárez Cabal\source\repos\Naves\Debug\Naves.exe

@@ -5,9 +5,9 @@ Enemy::Enemy(float x, float y, Game* game)
 	{
 		vx = -1;
 	}
+
 void Enemy::update() {
 	// Actualizar la animación
 	animation->update();
 	x = x + vx;
 }
-

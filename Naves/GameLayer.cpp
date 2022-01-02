@@ -9,7 +9,7 @@ GameLayer::GameLayer(Game* game) :Layer(game) {
 void GameLayer::init() {
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
 	audioBackground->play();
-
+	audioBomba = new Audio("/res/efecto_explosion.wav",false);
 	points = 0;
 	textPoints = new Text("hola", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
@@ -17,7 +17,7 @@ void GameLayer::init() {
 	background = new Background("res/fondo.png", WIDTH * 0.5, HEIGHT * 0.5,-1, game);
 	backgroundPoints = new Actor("res/icono_puntos.png", WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
-
+	bombas.clear();
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	enemies.push_back(new Enemy(300, 50, game));
 	enemies.push_back(new EnemyExtra(300, 200, game));
@@ -125,6 +125,7 @@ void GameLayer::update() {
 	background->update();
 	// Generar enemigos
 	newEnemyTime--;
+	newBombTime--;
 	if (newEnemyTime <= 0) {
 		int rX = (rand() % (600 - 500)) + 1 + 500;
 		int rY = (rand() % (300 - 60)) + 1 + 60;
@@ -134,6 +135,12 @@ void GameLayer::update() {
 		enemies.push_back(new EnemyExtra(rX, rY, game));
 		newEnemyTime = 110;
 	}
+	if (newBombTime <= 0) {
+		int rX = (rand() % (460));
+		int rY = (rand() % (300 - 60));
+		bombas.push_back(new Bomb(150, 200, game));
+		newBombTime = 600;
+	}
 	//-----
 	player->update();
 	for (auto const& enemy : enemies) {
@@ -142,6 +149,7 @@ void GameLayer::update() {
 	for (auto const& projectile : projectiles) {
 		projectile->update();
 	}
+
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
 			init();
@@ -151,6 +159,17 @@ void GameLayer::update() {
 	//Colisiones, Enemy - Proyectile
 	list<EnemyBase*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
+	list<Bomb*> deleteBombas;
+	//Colision bomba jugador
+	for (auto const& bomba : bombas) {
+		if (player->isOverlap(bomba)) {
+			//Se choca con la bomba
+			audioBomba->play();
+			enemies.clear();
+			bombas.clear();
+			return; // Cortar el for
+		}
+	}
 
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender() == false) {
@@ -200,9 +219,13 @@ void GameLayer::draw() {
 	for (auto const& projectile : projectiles) {
 		projectile->draw();
 	}
+	
 	player->draw();
 	for (auto const& enemy : enemies) {
 		enemy->draw();
+	}
+	for (auto const& bomb : bombas) {
+		bomb->draw();
 	}
 	textPoints->draw();
 	backgroundPoints->draw();

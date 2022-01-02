@@ -7,6 +7,7 @@
 #include "Projectile.h"
 #include "Text.h"
 #include "Audio.h"
+#include "Bomb.h"
 
 #include <list>
 
@@ -21,8 +22,10 @@ public:
 	void keysToControls(SDL_Event event);
 	Text* textPoints;
 	Audio* audioBackground;
+	Audio* audioBomba;
 	int points;
 	int newEnemyTime = 0;
+	int newBombTime = 100;
 	Actor* backgroundPoints;
 	Player* player;
 	Background* background;
@@ -31,6 +34,7 @@ public:
 	int controlMoveX = 0;
 
 	list<EnemyBase*> enemies;
+	list<Bomb*> bombas;
 	list<Projectile*> projectiles;
 };
 
