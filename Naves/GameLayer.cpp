@@ -11,11 +11,15 @@ void GameLayer::init() {
 	audioBackground->play();
 	audioBomba = new Audio("/res/efecto_explosion.wav",false);
 	points = 0;
+	vida = 3;
 	textPoints = new Text("hola", WIDTH * 0.92, HEIGHT * 0.04, game);
 	textPoints->content = to_string(points);
+	textVida = new Text("hola", WIDTH * 0.12, HEIGHT * 0.04, game);
+	textVida->content = to_string(vida);
 	player = new Player(50, 50, game);
 	background = new Background("res/fondo.png", WIDTH * 0.5, HEIGHT * 0.5,-1, game);
 	backgroundPoints = new Actor("res/icono_puntos.png", WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
+	vidaPoints = new Actor("res/corazon.png", WIDTH * 0.05, HEIGHT * 0.05, 44, 36, game);
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
 	bombas.clear();
 	enemies.clear(); // Vaciar por si reiniciamos el juego
@@ -130,8 +134,8 @@ void GameLayer::update() {
 		int rX = (rand() % (600 - 500)) + 1 + 500;
 		int rY = (rand() % (300 - 60)) + 1 + 60;
 		enemies.push_back(new Enemy(rX, rY, game));
-		//rX = (rand() % (600 - 500)) + 1 + 500;
-		//rY = (rand() % (300 - 60)) + 1 + 60;
+		rX = (rand() % (600 - 500)) + 1 + 500;
+		rY = (rand() % (300 - 60)) + 1 + 60;
 		enemies.push_back(new EnemyExtra(rX, rY, game));
 		newEnemyTime = 110;
 	}
@@ -146,13 +150,19 @@ void GameLayer::update() {
 	for (auto const& enemy : enemies) {
 		enemy->update();
 	}
+
 	for (auto const& projectile : projectiles) {
 		projectile->update();
 	}
 
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
-			init();
+			vida=vida-1;
+			textVida->content = to_string(vida);
+			if (vida < 0) {
+				init();
+			}
+			enemies.remove(enemy);
 			return; // Cortar el for
 		}
 	}
@@ -211,7 +221,6 @@ void GameLayer::update() {
 		delete delProjectile;
 	}
 	deleteProjectiles.clear();
-	cout << "update GameLayer" << endl;
 
 }
 void GameLayer::draw() {
@@ -228,8 +237,9 @@ void GameLayer::draw() {
 		bomb->draw();
 	}
 	textPoints->draw();
+	textVida->draw();
 	backgroundPoints->draw();
-	
+	vidaPoints->draw();
 
 	SDL_RenderPresent(game->renderer); // Renderiza
 }

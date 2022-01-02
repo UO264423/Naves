@@ -21,17 +21,20 @@ public:
 	void draw() override;
 	void keysToControls(SDL_Event event);
 	Text* textPoints;
+	Text* textVida;
 	Audio* audioBackground;
 	Audio* audioBomba;
 	int points;
 	int newEnemyTime = 0;
 	int newBombTime = 100;
 	Actor* backgroundPoints;
+	Actor* vidaPoints;
 	Player* player;
 	Background* background;
 	bool controlShoot = false;
 	int controlMoveY = 0;
 	int controlMoveX = 0;
+	int vida = 3;
 
 	list<EnemyBase*> enemies;
 	list<Bomb*> bombas;
