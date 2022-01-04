@@ -40,9 +40,11 @@ public:
 	int controlMoveX = 0;
 	int vida = 3;
 	int newPowerUpTime = 200;
+	int tiempoMonedas = 340;
 	
 
 	list<PowerUpDisparos*> listPowerUp;
+	list<Actor*> monedas;
 	list<EnemyBase*> enemies;
 	list<Bomb*> bombas;
 	list<Projectile*> projectiles;

@@ -142,6 +142,7 @@ void GameLayer::update() {
 	newEnemyTime--;
 	newBombTime--;
 	newPowerUpTime--;
+	tiempoMonedas--;
 	cout << newPowerUpTime << endl;
 	if (newEnemyTime <= 0) {
 		int rX = (rand() % (600 - 500)) + 1 + 500;
@@ -163,6 +164,14 @@ void GameLayer::update() {
 		int rY = (rand() % (300 - 60));
 		listPowerUp.push_back(new PowerUpDisparos(rX, rY, game));
 		newPowerUpTime = 600;
+	}
+
+	if (tiempoMonedas <= 0) {
+		tiempoMonedas = 340;
+		int rX = (rand() % (460));
+		int rY = (rand() % (300 - 60));
+		monedas.push_back(new Actor("res/moneda.png", rX, rY, 40, 40, game));
+		textPoints->content = to_string(points);
 	}
 
 	//-----
@@ -189,11 +198,14 @@ void GameLayer::update() {
 			return; // Cortar el for
 		}
 	}
+
+	
 	//Colisiones, Enemy - Proyectile
 	list<EnemyBase*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	list<Bomb*> deleteBombas;
 	list<PowerUpDisparos*> deletePW;
+	list<Actor*> deleteMonedas;
 	//Colision bomba jugador
 	for (auto const& bomba : bombas) {
 		if (player->isOverlap(bomba)) {
@@ -202,6 +214,13 @@ void GameLayer::update() {
 			enemies.clear();
 			bombas.clear();
 			return; // Cortar el for
+		}
+	}
+
+	for (auto const& moneda : monedas) {
+		if (player->isOverlap(moneda)) {
+			points += 10;
+			deleteMonedas.push_back(moneda);
 		}
 	}
 
@@ -257,8 +276,15 @@ void GameLayer::update() {
 		projectiles.remove(delProjectile);
 		delete delProjectile;
 	}
+
+	for (auto const& delMoneda : deleteMonedas) {
+		monedas.remove(delMoneda);
+		delete delMoneda;
+	}
+
 	deleteProjectiles.clear();
 	deletePW.clear();
+	deleteMonedas.clear();
 
 }
 void GameLayer::draw() {
@@ -278,6 +304,11 @@ void GameLayer::draw() {
 	for (auto const& pw : listPowerUp) {
 		pw->draw();
 	}
+
+	for (auto const& moneda : monedas) {
+		moneda->draw();
+	}
+
 	textPoints->draw();
 	textVida->draw();
 	textDisparos->draw();

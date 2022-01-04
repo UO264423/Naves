@@ -1,15 +1,22 @@
-﻿  GameLayer.cpp
+﻿  Game.cpp
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\Audio.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\Game.cpp(70,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\Game.cpp(70,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  GameLayer.cpp
 C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\Audio.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
 C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(16,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(18,68): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(20,64): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(25,96): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(149,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(149,31): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(152,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(152,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(158,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(158,29): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(164,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(164,45): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(150,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(150,31): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(153,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(153,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(159,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(159,29): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(165,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(165,45): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(173,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lucas Suárez Cabal\source\repos\Naves\Naves\GameLayer.cpp(173,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Generando código...
   Naves.vcxproj -> C:\Users\Lucas Suárez Cabal\source\repos\Naves\Debug\Naves.exe
